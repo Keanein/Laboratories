@@ -1,0 +1,32 @@
+type Customer {
+    id: ID!
+    name: String
+    invoices: [Invoice]
+}
+
+type Product {
+    id: ID!
+    name: String
+    invoices: [Invoice]
+}
+
+type Invoice {
+    id: ID!
+    customer: Customer
+    products: [Product]
+}
+
+type Query {
+    customers: [Customer]
+    customer(id: ID!): Customer
+    products: [Product]
+    product(id: ID!): Product
+    invoices: [Invoice]
+    invoice(id: ID!): Invoice
+}
+
+type Mutation {
+    addCustomer(name: String!): Customer
+    addProduct(name: String!): Product
+    addInvoice(customerId: ID!, productIds: [ID!]!): Invoice
+}
